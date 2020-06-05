@@ -7,9 +7,14 @@ const column = canvas.height / scale;
 var snake;
 var moveX = scale;
 var moveY = 0;
+var speed;
+var rules;
+
+//make our modal: choose speed and difficulty
+//assign value to speed and rules from user input
 
 (function() {
-  snake = new Snake();
+  snake = new HardSnake();
   cookie = new Cookie();
   cookie.randomLocation()
 
@@ -26,7 +31,7 @@ var moveY = 0;
       clearInterval(run);
     }
 
-  }, 500)
+  }, 100)
 
 })()
 
