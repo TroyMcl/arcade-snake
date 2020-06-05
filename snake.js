@@ -1,30 +1,60 @@
-function Snake() {
-  this.x = scale;
-  this.y = scale;
-
-
-  this.draw = function() {
-    ctx.fillStyle = '#18f550'
-    ctx.fillRect(this.x, this.y, scale, scale)
+class Snake {
+  constructor() {
+    this.x = scale;
+    this.y = scale;
+    this.score = 0;
+    this.gameOver = false;
+    this.snakeBody = [];
   }
 
-  this.move = function (x, y) {
-    if(x) {
-      this.x = this.x + x
-      if(this.x > canvas.width) {
-        this.x = 0;
-      } else if (this.x < 0) {
-        this.x = canvas.width
-      }
+  draw() {
+    ctx.fillStyle = '#008f26';
+    if (this.snakeBody.length > this.score) {
+      this.snakeBody.pop();
     }
-    if (y) {
-      this.y = this.y + y
-      if (this.y > canvas.height) {
-        this.y = 0;
-      } else if (this.y < 0) {
-        this.y = canvas.width;
-      }
+    for(let i = 0; i < this.snakeBody.length; i++) {
+      ctx.fillRect(this.snakeBody[i].x, this.snakeBody[i].y, scale, scale);
     }
+    ctx.fillStyle = '#18f550';
+    ctx.fillRect(this.x , this.y, scale, scale);
+
+    this.checkEndGame()
+  }
+
+  move(x, y) {
+    let lastLocation = {x: this.x, y: this.y}
+    this.snakeBody.unshift(lastLocation);
+
+    this.x = this.x + x;
+    this.y = this.y + y;
+
+    if (this.x > canvas.width) {
+      this.x = 0;
+    } else if (this.x < 0) {
+      this.x = canvas.width
+    }
+
+    if (this.y > canvas.height) {
+      this.y = 0;
+    } else if (this.y < 0) {
+      this.y = canvas.width;
+    }
+
     this.draw()
+  }
+
+  eat(cookie) {
+    if (cookie.x === this.x && cookie.y === this.y) {
+      this.score++;
+      return true;
+    }
+  }
+
+  checkEndGame() {
+    for (let i = 0; i < this.snakeBody.length; i++) {
+      if (this.x === this.snakeBody[i].x && this.y === this.snakeBody[i].y) {
+        this.gameOver = true;
+      }
+    }
   }
 }

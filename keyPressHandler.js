@@ -24,6 +24,9 @@ document.body.addEventListener('keydown', (event) => {
     case 'a':
       changeDirection(-scale, 0)
       break;
+    case 'G':
+      snake.score++;
+      console.log('Hey, you didn\'t eat anything!')
     default:
       console.log('You have pressed an invaid key ', event.key)
   }
