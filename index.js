@@ -6,31 +6,57 @@ const column = canvas.height / scale;
 
 var moveX = scale;
 var moveY = 0;
+var increaseSpeed = false;
 var speed;
 var snake;
 var rocks;
+var chosenDifficulty;
+var chosenSpeed;
 
 document.addEventListener("DOMContentLoaded", () => {
   let modal = document.getElementById('modal-init');
   modal.style.display = 'block';
   document.getElementById('game-speed').addEventListener('click', (e) => {
     if (e.target.value === 'slow') {
+      chosenSpeed = 'SLOW';
       speed = 200;
     };
+    if (e.target.value === 'regular') {
+      chosenSpeed = 'REGULAR';
+      speed = 150;
+    }
     if (e.target.value === 'fast') {
+      chosenSpeed = 'FAST';
       speed = 100;
     };
   });
   document.getElementById('game-difficulty').addEventListener('click', (e) => {
     if (e.target.value === 'easy') {
+      chosenDifficulty = 'EASY';
       snake = new Snake();
     };
     if (e.target.value === 'standard') {
+      chosenDifficulty = 'STANDARD';
       snake = new HardSnake();
     };
     if (e.target.value === 'hard') {
       snake = new HardSnake();
+      chosenDifficulty = 'HARD';
+      increaseSpeed = true;
+    };
+  });
+  document.getElementById('rock-quantity').addEventListener('click', (e) => {
+    if (e.target.value === 'none') {
+      rocks = null;
+    };
+    if (e.target.value === 'medium') {
       rocks = new Rocks();
+      rocks.quantity = 25;
+      rocks.generateRocks()
+    };
+    if (e.target.value === 'lots') {
+      rocks = new Rocks();
+      rocks.quantity = 35;
       rocks.generateRocks()
     };
   });
@@ -40,10 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
       startGame()
     }
   });
-
 });
 
 const startGame = function() {
+  showSettings()
   cookie = new Cookie();
   cookie.randomLocation()
 
@@ -56,12 +82,18 @@ const startGame = function() {
     snake.move(moveX, moveY);
 
     if(snake.eat(cookie)) {
-      cookie.randomLocation()
+      cookie.randomLocation();
+      updateScore();
+      if (increaseSpeed) {
+        speed = speed - 5;
+        console.log(speed)
+      }
     }
-    
+
     if(snake.gameOver) {
       clearInterval(run);
       let finalScreen = document.getElementById('modal-end');
+      document.getElementById('final-score').innerHTML = `Final Score: ${snake.score}`;
       finalScreen.style.display = 'block';
     }
 
@@ -72,4 +104,13 @@ const startGame = function() {
 const changeDirection = (x, y) => {
   moveX = x;
   moveY = y;
-}
+};
+
+const updateScore = () => {
+  document.getElementById('score').innerHTML = `Score: ${snake.score}`
+};
+
+const showSettings = () => {
+  document.getElementById('chosen-speed').innerHTML = `Game Speed: ${chosenSpeed}`;
+  document.getElementById('chosen-difficulty').innerHTML = `Game Difficulty: ${chosenDifficulty}`;
+};

@@ -1,15 +1,41 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: black;
+}
+
 #container {
   width: 80%;
   margin: auto;
+  text-align: center;
 }
 
-h1 {
+#canvas {
+  border: 5px solid  #2c8243;
+}
+
+h1, h2, h3, h4, p {
   color: #2c8243;
   text-align: center;
   font-weight: bold;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 200%;
 }
+
+.main-heading {
+  padding: 40px;
+  border-bottom: 2px solid  #2c8243;
+}
+
+.main-title {
+  font-size: 250%;
+}
+
+#game-board {
+  display: inline-block;
+}
+
+#score-board{
+  border-bottom: 2px solid  #2c8243;
+}
+
 /*Styles for First Modal*/
 #modal-init {
   display: none;
@@ -40,12 +66,18 @@ input[type="submit"] {
   width: 100%;
   margin-top: 25px;
   padding: 20px;
-  font-size: 125%;
+  font-size: 120%;
+  font-family: 'Press Start 2P', cursive;
+}
+
+input[type="radio"] {
+  padding: 25px;
 }
 
 fieldset {
   margin-top: 25px;
-  font-size: 125%;
+  padding: 20px;
+  font-size: 100%;
 }
 
 /*Styles for endgame modal*/
@@ -75,5 +107,6 @@ fieldset {
   width: 100%;
   margin-top: 25px;
   padding: 20px;
-  font-size: 125%;
+  font-size: 120%;
+  font-family: 'Press Start 2P', cursive;
 }
