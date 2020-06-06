@@ -3,8 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Snake Game</title>
+    <link rel="stylesheet" href="index.css"></link>
   </head>
   <body>
+    <h1>Play Snake</h1>
+    <div id="modal-init">
+      <div id="model-content">
+        <h2 id="model-heading">Choose your game settings</h2>
+        <fieldset id="game-speed">
+          <legend>Please Choose Your Game Speed:</legend>
+          <input name="speed" type="radio" id="slow" value="slow">
+          <label for="slow">Slow</label> <br>
+          <input name="speed" type="radio" id="fast" value='fast'>
+          <label for="fast">Fast</label>
+        </fieldset>
+        <fieldset id="game-difficulty">
+          <legend>Please Choose Your Difficulty:</legend>
+          <input name="difficulty" type="radio" id="easy" value="easy">
+          <label for="easy">Easy</label>
+          <input name="difficulty" type="radio" id="standard" value="standard">
+          <label for="standard">Standard</label>
+          <input name="difficulty" type="radio" id="hard" value="hard">
+          <label for="hard">Hard</label>
+        </fieldset>
+        <input id="start-game" type="submit" value="Start Game"/>
+      </div>
+    </div>
+
     <div id="game-board">
       <canvas id="canvas" height="600px" width="600px" style="background-color: black;"></canvas>
     </div>
@@ -12,6 +37,7 @@
     <script src="snake.js"></script>
     <script src="hardSnake.js"></script>
     <script src="cookie.js"></script>
+    <script src="rocks.js"></script>
     <script src="index.js"></script>
   </body>
 </html>

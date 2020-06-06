@@ -25,5 +25,12 @@ class HardSnake extends Snake {
         this.gameOver = true;
       }
     }
+    if (rocks) {
+      for (let j = 0; j < rocks.rocks.length; j++) {
+        if (rocks.rocks[j].x === this.x && rocks.rocks[j].y === this.y) {
+          this.gameOver = true;
+        }
+      }
+    }
   }
 }

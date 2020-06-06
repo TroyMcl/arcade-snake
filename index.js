@@ -4,23 +4,54 @@ const scale = 20;
 const rows = canvas.height / scale;
 const column = canvas.height / scale;
 
-var snake;
 var moveX = scale;
 var moveY = 0;
 var speed;
-var rules;
+var snake;
+var rocks;
 
-//make our modal: choose speed and difficulty
-//assign value to speed and rules from user input
+document.addEventListener("DOMContentLoaded", () => {
+  let modal = document.getElementById('modal-init');
+  modal.style.display = 'block';
+  document.getElementById('game-speed').addEventListener('click', (e) => {
+    if (e.target.value === 'slow') {
+      speed = 200;
+    };
+    if (e.target.value === 'fast') {
+      speed = 100;
+    };
+  });
+  document.getElementById('game-difficulty').addEventListener('click', (e) => {
+    if (e.target.value === 'easy') {
+      snake = new Snake();
+    };
+    if (e.target.value === 'standard') {
+      snake = new HardSnake();
+    };
+    if (e.target.value === 'hard') {
+      snake = new HardSnake();
+      rocks = new Rocks();
+      rocks.generateRocks()
+    };
+  });
+  document.getElementById('start-game').addEventListener('click', (e) => {
+    modal.style.display = 'none';
+    startGame()
+  });
 
-(function() {
-  snake = new HardSnake();
+});
+
+const startGame = function() {
+  //snake = new Snake();
   cookie = new Cookie();
   cookie.randomLocation()
 
   const run = setInterval(() => {
     ctx.clearRect(0,0,canvas.width, canvas.height);
-    cookie.draw()
+    if (rocks) {
+      rocks.draw();
+    }
+    cookie.draw();
     snake.move(moveX, moveY);
 
     if(snake.eat(cookie)) {
@@ -31,9 +62,9 @@ var rules;
       clearInterval(run);
     }
 
-  }, 100)
+  }, speed)
 
-})()
+}
 
 const changeDirection = (x, y) => {
   moveX = x;
