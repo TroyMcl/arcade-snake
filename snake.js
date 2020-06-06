@@ -3,6 +3,7 @@ class Snake {
     this.x = scale;
     this.y = scale;
     this.score = 0;
+    this.doubleback = {};
     this.gameOver = false;
     this.snakeBody = [];
   }
@@ -10,7 +11,7 @@ class Snake {
   draw() {
     ctx.fillStyle = '#008f26';
     if (this.snakeBody.length > this.score) {
-      this.snakeBody.pop();
+      this.doubleback = this.snakeBody.pop();
     }
     for(let i = 0; i < this.snakeBody.length; i++) {
       ctx.fillRect(this.snakeBody[i].x, this.snakeBody[i].y, scale, scale);
@@ -51,6 +52,9 @@ class Snake {
   }
 
   checkEndGame() {
+    if (this.doubleback.x === this.x && this.doubleback.y === this.y) {
+      this.gameOver = true;
+    }
     for (let i = 0; i < this.snakeBody.length; i++) {
       if (this.x === this.snakeBody[i].x && this.y === this.snakeBody[i].y) {
         this.gameOver = true;

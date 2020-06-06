@@ -35,14 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
   document.getElementById('start-game').addEventListener('click', (e) => {
-    modal.style.display = 'none';
-    startGame()
+    if (speed && snake) {
+      modal.style.display = 'none';
+      startGame()
+    }
   });
 
 });
 
 const startGame = function() {
-  //snake = new Snake();
   cookie = new Cookie();
   cookie.randomLocation()
 
@@ -57,9 +58,11 @@ const startGame = function() {
     if(snake.eat(cookie)) {
       cookie.randomLocation()
     }
-
+    
     if(snake.gameOver) {
       clearInterval(run);
+      let finalScreen = document.getElementById('modal-end');
+      finalScreen.style.display = 'block';
     }
 
   }, speed)
