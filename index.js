@@ -47,6 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.getElementById('rock-quantity').addEventListener('click', (e) => {
     if (e.target.value === 'none') {
+      if (rocks) {
+        rocks.rocks = [];
+      }
       rocks = null;
     };
     if (e.target.value === 'medium') {
