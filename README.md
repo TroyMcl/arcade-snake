@@ -2,7 +2,7 @@
 Implementation of the classic arcade game snake.
 
 ## Table of Contents
-* [Introduction]
+* []Introduction
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Images](#images)
@@ -13,9 +13,9 @@ The player can select a difficulty that will change the game rules. Easy will al
 
 
 ## Technologies
-* [Javascript]
-* [CSS]
-* [HTML]
+* Javascript
+* CSS
+* HTML
 
 ## Setup
 To run the game locally, simply run the HTML in a Google Chrome, or Firefox browser
@@ -26,10 +26,10 @@ To run the game locally, simply run the HTML in a Google Chrome, or Firefox brow
 ![Game in Progress](./images/game-play2.png)
 
 ## Features
-* [Models built with vanilla Javascript for setting up your game and displaying final score]
-* [Arrow key functionality, along with WASD functionality]
-* [Secret cheet code to increas score and grow the snake without eating fruit]
+* []Models built with vanilla Javascript for setting up your game and displaying final score
+* []Arrow key functionality, along with WASD functionality
+* []Secret cheet code to increas score and grow the snake without eating fruit
 
 TODO
-* [Auto populate field with previous setting after playing first game]
-* [Set up highest score tracker for app]
+* []Auto populate field with previous setting after playing first game
+* []Set up highest score tracker for app
