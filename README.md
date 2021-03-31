@@ -9,8 +9,7 @@ Implementation of the classic arcade game snake.
 * [Features](#features)
 
 ## Introduction
-The player can select a difficulty that will change the game rules. Easy will allow the snake to wrap through walls. Standard will end the game if a player hits a wall. Hard will end the game if a player hits a will, and will increase the snakes speed each time a piece of fruit is eaten. Players can choose snake speed, and if they want to have obstacles, rocks, in the playing area.
-
+The game has three levels of difficulty.  Easy allows the snake to wrap across the screen without interrupting play.  Standard and Hard setting will end the game if the snake contacts the perimeter.  Additional difficulties are created in the Hard setting with an increase in speed each time a piece of fruit is eaten.  On each level, players can select their preferred speed and number of potentially fatal obstacles on the course.
 
 ## Technologies
 * Javascript & Javascript ES6 Classes
@@ -28,7 +27,7 @@ To run the game locally, simply run the HTML in a Google Chrome, or Firefox brow
 ## Features
 * Modals built with vanilla Javascript for setting up your game and displaying final score
 * Arrow key functionality, along with WASD functionality
-* Secret cheet code to increas score and grow the snake without eating fruit
+* Secret cheat code to increase score and grow the snake without eating fruit
 
 TODO
 * Auto populate field with previous setting after playing first game
